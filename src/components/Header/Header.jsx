@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../assets/white_logo.png';
 import { useNavigate } from 'react-router-dom';
-import './style.css';
+import './headerStyle.css';
 
 export function Header() {
   const navigate = useNavigate();
@@ -11,16 +11,16 @@ export function Header() {
   }
   
   return (
-    <nav class='container'>
-      <div>
+    <nav className='container'>
+      <div className='header-wrapper'>
         <img 
           src={ Logo }
-          class='logo'
+          className='logo icon'
           onClick={handleClick}
         />
       </div>
       <div>
-        <li class='list'>
+        <li className='list'>
           <ul>Why us</ul>
           <ul>Contact</ul>
         </li>

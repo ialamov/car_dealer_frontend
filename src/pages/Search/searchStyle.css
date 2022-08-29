@@ -1,8 +1,20 @@
-.background {
+.background-search {
   background-image: url('../../assets/road.jpg');
   background-size: cover;
   padding: 30px;
   height: 78vh;
+}
+
+.container-search-form {
+  background-color: #082547;
+  color: white;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .form__label {

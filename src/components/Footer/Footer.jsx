@@ -1,12 +1,12 @@
 import React from 'react';
-import './style.css';
+import './footerStyle.css';
 
 export function Footer() {
   return (
-    <div class='footer'>
-      <ul class="wrapper">
-        <li class='icon'>©Ialamov</li>
-        <li class="icon github">
+    <div className='footer'>
+      <ul className="wrapper">
+        <li className='icon'>©Ialamov</li>
+        <li className="icon github">
           <a href='https://github.com/ialamov'></ a>
           Github
         </li>

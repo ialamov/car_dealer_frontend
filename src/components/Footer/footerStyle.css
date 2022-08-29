@@ -1,10 +1,7 @@
 .footer {
-  bottom:0;
   width:100%;
-  height:80px;   
-  background:#1A216F;
-  color: #202C32;
-  font-size: 15px;
+  background:#082547;
+  font-size: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +12,7 @@ a:link, a:visited {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin-left: 60px;
+  margin-left: 40px;
 }
 
 /* 
@@ -33,15 +30,14 @@ a:link, a:visited {
 }
 
 .wrapper .icon {
-  position: relative;
-  background: #1A216F;
+  background: #082547;
   color: white;
   border-radius: 50%;
-  padding: 15px;
-  margin: 10px;
+  padding: 10px;
+  margin: 5px;
   width: 50px;
-  height: 50px;
-  font-size: 18px;
+  height: 30px;
+  font-size: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,9 +48,8 @@ a:link, a:visited {
 }
 
 .wrapper .tooltip {
-  position: absolute;
+
   top: 0;
-  font-size: 14px;
   background: #ffffff;
   color: #ffffff;
   padding: 5px 8px;
@@ -65,17 +60,11 @@ a:link, a:visited {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
- .img { 
-  height: 80px;
- }
-
  .wrapper .tooltip::before {
-  position: absolute;
   content: "";
   height: 4px;
   width: 4px;
   background: #ffffff;
-  bottom: -3px;
   left: 50%;
   transform: translate(-50%) rotate(45deg);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);

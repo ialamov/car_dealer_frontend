@@ -3,7 +3,6 @@
   background-image: url('../../assets/modern_car.jpeg');
   background-size: cover;
   padding: 30px;
-  height: 78vh;
   display: flex;
   flex-direction: column;
   align-content: space-around;

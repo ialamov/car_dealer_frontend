@@ -19,16 +19,16 @@ export function Home() {
   return (
     <div>
       <Header />
-      <div class='container-home background-home'>
+      <div className='container-home background-home'>
         <button 
-          class='btn1'
+          className='btn1'
           type='button'
           onClick={handleClickSearch}
         >
           Search
         </button>
         <button 
-          class='btn2'
+          className='btn2'
           type='button'
           onClick={handleClickRegister}
         >

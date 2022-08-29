@@ -65,7 +65,6 @@ export function Register() {
           }
         }),
         alert('Registered with succsess!');
-        navigate('/');
       } catch (error) {
         alert('Houston we have a problem. We are working hard to solve it. Try again in an hour.')
       }

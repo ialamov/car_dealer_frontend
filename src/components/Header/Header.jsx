@@ -11,7 +11,7 @@ export function Header() {
   }
   
   return (
-    <nav className='container'>
+    <nav className='container-header'>
       <div className='header-wrapper'>
         <img 
           src={ Logo }

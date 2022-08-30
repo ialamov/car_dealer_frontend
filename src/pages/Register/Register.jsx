@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import api from '../../utils/api'
 import'./registerStyle.css';
 
@@ -12,11 +12,34 @@ export function Register() {
   const [fabricationYear, setFabricationYear] = useState(Number);
   const [color, setColor] = useState('');
   const [price, setPrice] = useState(Number);
+  const [carIdInformation, setCarIdInformation] = useState('');
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(() => {
     theCarList();
+    verifyId();
   }, []);
+
+  const verifyId = async () => {
+    if (!state.id) {
+      return;
+    }
+    
+    const getCarInfo = await api({
+      method: "get",
+      url: `/carsales/${state.id}`,
+    });
+
+    console.log(getCarInfo.data)
+    
+    setCarIdInformation(state.id);
+    setBrand(getCarInfo.data.brand);
+    setModel(getCarInfo.data.model);
+    setFabricationYear(getCarInfo.data.fabrication_year);
+    setColor(getCarInfo.data.color);
+    setPrice(getCarInfo.data.price)
+  }
 
   const theCarList = async () => {
     const theList = await api.get('/carsales/brands');
@@ -52,7 +75,26 @@ export function Register() {
         }
 
       try{
-        console.log(brand, model, fabricationYear, color, price)
+        if (carIdInformation) {
+          api({
+            method: "put",
+            url: `/carsales/${carIdInformation}`,
+            data: {
+              brand: brand,
+              model: model,
+              fabrication_year: fabricationYear,
+              color: color,
+              price: price
+            }
+          });
+          setCarIdInformation('');
+          setBrand('');
+          setModel('');
+          setFabricationYear(Number);
+          setColor('');
+          setPrice(Number)
+          return alert('Updated with succsess!');
+        }
         api({
           method: "post",
           url: '/carsales',
@@ -65,8 +107,14 @@ export function Register() {
           }
         }),
         alert('Registered with succsess!');
+        setCarIdInformation('');
+        setBrand('');
+        setModel('');
+        setFabricationYear(Number);
+        setColor('');
+        setPrice(Number)
       } catch (error) {
-        alert('Houston we have a problem. We are working hard to solve it. Try again in an hour.')
+        alert('Houston we have a problem. We are working hard to solve it. Try again in an hour.');
       }
     }
 
@@ -85,6 +133,7 @@ export function Register() {
               <select 
                 className='select'
                 name='Brand'
+                value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               >
                 <option>
@@ -106,6 +155,7 @@ export function Register() {
                 className='input'
                 id='car-model'
                 type='text'
+                value={model}
                 onChange={(e) => setModel(e.target.value)}
               />
             </label>
@@ -117,6 +167,7 @@ export function Register() {
                 type='number'
                 min='1900'
                 max='2023'
+                value={fabricationYear}
                 onChange={(e) => setFabricationYear(e.target.value)}
               >
               </input>
@@ -129,6 +180,7 @@ export function Register() {
               className='input'
               id='color'
               type='text'
+              value={color}
               onChange={(e) => setColor(e.target.value)}
             />
           </label>
@@ -138,6 +190,7 @@ export function Register() {
               className='input'
               id='price'
               type='text'
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>

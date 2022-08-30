@@ -9,6 +9,14 @@ export function Header() {
   const handleClick = () => {
     navigate('/');
   }
+
+  const handleClickRegister = () => {
+    navigate('/register');
+  };
+
+  const handleClickSearch = () => {
+    navigate('/search');
+  }
   
   return (
     <nav className='container-header'>
@@ -21,8 +29,12 @@ export function Header() {
       </div>
       <div>
         <li className='list'>
-          <ul>Why us</ul>
-          <ul>Contact</ul>
+          <ul
+            onClick={handleClickSearch}
+          >Search</ul>
+          <ul
+            onClick={handleClickRegister}
+          >Register</ul>
         </li>
       </div>
     </nav>
